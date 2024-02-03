@@ -21,19 +21,25 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(this.title),
-      ),
-      body: Center(
+        body: Container(
+      decoration: BoxDecoration(color: Colors.black),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
                 margin: EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
-                  child: Text('TURNUVA BAŞLAT'),
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(225, 50)),
+                  child: Text(
+                    'TURNUVA BAŞLAT',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(300, 50),
+                      shape: LinearBorder(side: BorderSide.none)),
                   onPressed: () {
                     // Handle button 1 press
                   },
@@ -41,9 +47,16 @@ class MyHomePage extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
-                  child: Text('TURNUVAYA DEVAM ET'),
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(225, 50)),
+                  child: Text(
+                    'TURNUVAYA DEVAM ET',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(300, 50),
+                      shape: LinearBorder(side: BorderSide.none)),
                   onPressed: () {
                     // Handle button 2 press
                   },
@@ -51,9 +64,16 @@ class MyHomePage extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
-                  child: Text('GEÇMİŞ TURNUVALAR'),
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(225, 50)),
+                  child: Text(
+                    'GEÇMİŞ TURNUVALAR',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(300, 50),
+                      shape: LinearBorder(side: BorderSide.none)),
                   onPressed: () {
                     // Handle button 3 press
                   },
@@ -61,9 +81,16 @@ class MyHomePage extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
-                  child: Text('AYARLAR'),
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(225, 50)),
+                  child: Text(
+                    'AYARLAR',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(300, 50),
+                      shape: LinearBorder(side: BorderSide.none)),
                   onPressed: () {
                     // Handle button 4 press
                   },
@@ -71,9 +98,16 @@ class MyHomePage extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
-                  child: Text('HAKKINDA'),
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(225, 50)),
+                  child: Text(
+                    'HAKKINDA',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(300, 50),
+                      shape: LinearBorder(side: BorderSide.none)),
                   onPressed: () {
                     // Handle button 5 press
                   },
@@ -81,6 +115,6 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
