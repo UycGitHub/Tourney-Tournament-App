@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class Tournament {
   //fields
   String? name;
-  bool? isKnockout;
+  bool isKnockout = false;
   List<Team> teams = [];
-  List<Match>? fixture;
+  List<Match> fixture = [];
   DateTime? startingDate;
   DateTime? endingDate;
   Team? winner;
@@ -18,12 +18,10 @@ class Tournament {
   set setTeamName(String? value) => name = value;
 
   bool? get getIsKnockout => isKnockout;
-  set setIsKnockout(bool? value) => isKnockout = value;
 
   List<Team>? get getTeams => teams;
 
   List<Match>? get getFixture => fixture;
-  set setFixture(List<Match>? value) => fixture = value;
 
   DateTime? get getStartingDate => startingDate;
   set setStartingDate(DateTime? value) => startingDate = value;
@@ -43,19 +41,21 @@ class Tournament {
   //constructor
   Tournament(this.name, this.isKnockout, this.startingDate, this.endingDate,
       this.trophy, this.description) {
-    debugPrint("Tournament has been created.");
+    debugPrint("Tournament has been created named $name.");
   }
 
   //methods
   void addTeam(Team team) {
     teams.add(team);
+    debugPrint("A team has been added named $team.");
   }
 
   void removeTeam(Team team) {
     teams.remove(team);
+    debugPrint("A team has been removed named $team.");
   }
 
-  Team checkWinner(bool isKnockout) {
+  void checkWinner(bool isKnockout) {
     Team winner = teams[0];
 
     if (isKnockout) {
@@ -78,67 +78,77 @@ class Tournament {
       }
     }
 
-    return winner;
+    setWinner = winner;
+    debugPrint("Winner is $winner");
+  }
+
+  //todo: fixture should be setable for knockout and point
+
+  void createFixture(List<Team> teams) {
+    if (!isKnockout) {
+      for (var i = 0; i < teams.length; i++) {
+        for (var j = 0; j < teams.length; j++) {
+          if (teams[i] != teams[j]) {
+            Match match = Match(teams[i], teams[j]);
+            fixture.add(match);
+          }
+        }
+      }
+    }
   }
 }
 
 class Team {
   //fields
-  String? name;
-  int? winCount;
-  int? loseCount;
-  int? drawCount;
-  int? matchCount;
-  int? goalsForCount;
-  int? goalsAgainstCount;
-  int? goalDifferenceCount;
-  int points = -1;
-  int? stage;
+  String name = "";
+  int winCount = 0;
+  int loseCount = 0;
+  int drawCount = 0;
+  int matchCount = 0;
+  int goalsForCount = 0;
+  int goalsAgainstCount = 0;
+  int goalDifferenceCount = 0;
+  int points = 0;
+  int stage = -1;
   List<Match>? matches;
 
-  // Getter ve Setter metodu: teamName
+  // gets sets
   String? get getTeamName => name;
-  set setTeamName(String? value) => name = value;
+  set setTeamName(String value) => name = value;
 
-  // Getter ve Setter metodu: winCount
   int? get getWinCount => winCount;
-  set setWinCount(int? value) => winCount = value;
+  set setWinCount(int value) => winCount = value;
 
-  // Getter ve Setter metodu: loseCount
   int? get getLoseCount => loseCount;
-  set setLoseCount(int? value) => loseCount = value;
+  set setLoseCount(int value) => loseCount = value;
 
-  // Getter ve Setter metodu: drawCount
   int? get getDrawCount => drawCount;
-  set setDrawCount(int? value) => drawCount = value;
+  set setDrawCount(int value) => drawCount = value;
 
-  // Getter ve Setter metodu: matchCount
   int? get getMatchCount => matchCount;
-  set setMatchCount(int? value) => matchCount = value;
+  set setMatchCount(int value) => matchCount = value;
 
-  // Getter ve Setter metodu: goalsForCount
   int? get getGoalsForCount => goalsForCount;
-  set setGoalsForCount(int? value) => goalsForCount = value;
+  set setGoalsForCount(int value) => goalsForCount = value;
 
-  // Getter ve Setter metodu: goalsAgainstCount
   int? get getGoalsAgainstCount => goalsAgainstCount;
-  set setGoalsAgainstCount(int? value) => goalsAgainstCount = value;
+  set setGoalsAgainstCount(int value) => goalsAgainstCount = value;
 
-  // Getter ve Setter metodu: goalDifferenceCount
   int? get getGoalDifferenceCount => goalDifferenceCount;
-  set setGoalDifferenceCount(int? value) => goalDifferenceCount = value;
+  set setGoalDifferenceCount(int value) => goalDifferenceCount = value;
 
-  // Getter ve Setter metodu: points
   int get getPoints => points;
   set setPoints(int value) => points = value;
 
-  // Getter ve Setter metodu: stage
   int? get getStage => stage;
-  set setStage(int? value) => stage = value;
+  set setStage(int value) => stage = value;
 
-  // Getter ve Setter metodu: matches
   List<Match>? get getMatches => matches;
   set setMatches(List<Match>? value) => matches = value;
+
+  //constructor
+
+  //methods
 }
 
 class Match {
@@ -150,27 +160,32 @@ class Match {
   int? secondTeamScore;
   DateTime? date;
 
-  // Getter ve Setter metodu: firstTeam
   Team? get getFirstTeam => firstTeam;
   set setFirstTeam(Team? value) => firstTeam = value;
 
-  // Getter ve Setter metodu: secondTeam
   Team? get getSecondTeam => secondTeam;
   set setSecondTeam(Team? value) => secondTeam = value;
 
-  // Getter ve Setter metodu: winner
   Team? get getWinner => winner;
   set setWinner(Team? value) => winner = value;
 
-  // Getter ve Setter metodu: firstTeamScore
   int? get getFirstTeamScore => firstTeamScore;
   set setFirstTeamScore(int? value) => firstTeamScore = value;
 
-  // Getter ve Setter metodu: secondTeamScore
   int? get getSecondTeamScore => secondTeamScore;
   set setSecondTeamScore(int? value) => secondTeamScore = value;
 
-  // Getter ve Setter metodu: date
   DateTime? get getDate => date;
   set setDate(DateTime? value) => date = value;
+
+  // constructor
+  Match(this.firstTeam, this.secondTeam) {
+    debugPrint("The match has been created : $firstTeam and $secondTeamScore");
+  }
+  // methods
+}
+
+void main(List<String> args) {
+  Tournament tournament = Tournament("deneme", false, DateTime.now(),
+      DateTime.now(), "100₺", "deneme turnuvası");
 }
