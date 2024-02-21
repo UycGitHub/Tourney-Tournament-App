@@ -83,7 +83,7 @@ class Tournament {
   }
 
   //todo: fixture should be setable for knockout and point
-
+  //todo: fixture should be mixed
   void createFixture() {
     if (!isKnockout) {
       for (var i = 0; i < teams.length; i++) {
@@ -92,6 +92,16 @@ class Tournament {
             Match match = Match(teams[i], teams[j]);
             fixture.add(match);
           }
+        }
+      }
+    }
+  }
+
+  void recordMatches() {
+    for (Team team in teams) {
+      for (Match match in fixture) {
+        if (team.name == match.firstTeam.name) {
+          team.addMatch(match);
         }
       }
     }
@@ -110,9 +120,10 @@ class Team {
   int goalDifferenceCount = 0;
   int points = 0;
   int stage = -1;
-  List<Match>? matches;
+  List<Match> matches = [];
 
   // gets sets
+
   String? get getTeamName => name;
   set setTeamName(String value) => name = value;
 
@@ -143,12 +154,14 @@ class Team {
   int? get getStage => stage;
   set setStage(int value) => stage = value;
 
-  List<Match>? get getMatches => matches;
-  set setMatches(List<Match>? value) => matches = value;
+  List<Match> get getMatches => matches;
 
   //constructor
   Team(this.name);
   //methods
+  void addMatch(Match match) {
+    matches.add(match);
+  }
 }
 
 class Match {
