@@ -21,7 +21,7 @@ class Tournament {
 
   List<Team>? get getTeams => teams;
 
-  List<Match>? get getFixture => fixture;
+  List<Match> get getFixture => fixture;
 
   DateTime? get getStartingDate => startingDate;
   set setStartingDate(DateTime? value) => startingDate = value;
@@ -84,7 +84,7 @@ class Tournament {
 
   //todo: fixture should be setable for knockout and point
 
-  void createFixture(List<Team> teams) {
+  void createFixture() {
     if (!isKnockout) {
       for (var i = 0; i < teams.length; i++) {
         for (var j = 0; j < teams.length; j++) {
@@ -147,24 +147,23 @@ class Team {
   set setMatches(List<Match>? value) => matches = value;
 
   //constructor
-
+  Team(this.name);
   //methods
 }
 
 class Match {
   // fields
-  Team? firstTeam;
-  Team? secondTeam;
+  Team firstTeam = Team("");
+  Team secondTeam = Team("");
+  String name = "";
   Team? winner;
   int? firstTeamScore;
   int? secondTeamScore;
   DateTime? date;
 
-  Team? get getFirstTeam => firstTeam;
-  set setFirstTeam(Team? value) => firstTeam = value;
+  Team get getFirstTeam => firstTeam;
 
-  Team? get getSecondTeam => secondTeam;
-  set setSecondTeam(Team? value) => secondTeam = value;
+  Team get getSecondTeam => secondTeam;
 
   Team? get getWinner => winner;
   set setWinner(Team? value) => winner = value;
@@ -180,7 +179,9 @@ class Match {
 
   // constructor
   Match(this.firstTeam, this.secondTeam) {
-    debugPrint("The match has been created : $firstTeam and $secondTeamScore");
+    debugPrint(
+        "The match has been created : ${firstTeam.name} and ${secondTeam.name}");
+    name = firstTeam.name + " vs " + secondTeam.name;
   }
   // methods
 }
@@ -188,4 +189,17 @@ class Match {
 void main(List<String> args) {
   Tournament tournament = Tournament("deneme", false, DateTime.now(),
       DateTime.now(), "100₺", "deneme turnuvası");
+  Team team1 = Team("takım 1");
+  Team team2 = Team("takım 2");
+  Team team3 = Team("takım 3");
+  Team team4 = Team("takım 4");
+  tournament
+    ..addTeam(team1)
+    ..addTeam(team2)
+    ..addTeam(team3)
+    ..addTeam(team4);
+  tournament.createFixture();
+  for (Match match in tournament.getFixture) {
+    print(match.name);
+  }
 }
