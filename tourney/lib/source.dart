@@ -82,6 +82,7 @@ class Tournament {
     debugPrint("Winner is $winner");
   }
 
+  //todo: a method the records the match scores
   //todo: fixture should be setable for knockout and point
   //todo: fixture should be mixed
   void createFixture() {
@@ -100,7 +101,8 @@ class Tournament {
   void recordMatches() {
     for (Team team in teams) {
       for (Match match in fixture) {
-        if (team.name == match.firstTeam.name) {
+        if ((team.name == match.firstTeam.name) &&
+            (team.name == match.secondTeam.name)) {
           team.addMatch(match);
         }
       }
@@ -213,6 +215,12 @@ void main(List<String> args) {
     ..addTeam(team4);
   tournament.createFixture();
   for (Match match in tournament.getFixture) {
+    print(match.name);
+  }
+
+  print("takım 1 MAÇLARI");
+  tournament.recordMatches();
+  for (Match match in team1.matches) {
     print(match.name);
   }
 }
