@@ -9,10 +9,14 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          //normally properties must takee from theme but we have not now
-          ),
+        //normally properties must takee from theme but we have not now
+        title: Center(
+            child: Text(
+          "Welcome To Tourney".toUpperCase(),
+        )),
+      ),
       body: Container(
-        decoration: BoxDecoration(color: Colors.black),
+        decoration: BoxDecoration(color: Colors.green),
         child: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -44,18 +48,22 @@ class CustomContainersForOnPressedMethods extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          fixedSize: const Size(300, 50),
-          shape: RoundedRectangleBorder(side: BorderSide.none),
-        ),
-        onPressed: onPressed,
-        child: Text(
-          myText,
-          style: const TextStyle(
-            //color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            fixedSize: const Size(300, 50),
+            shape: RoundedRectangleBorder(side: BorderSide.none),
+          ),
+          onPressed: onPressed,
+          child: Text(
+            myText,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
         ),
       ),

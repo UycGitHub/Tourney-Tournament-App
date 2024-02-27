@@ -7,9 +7,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tourney',
-      theme: ThemeData.light(),
-      // I want make a spesific theme in the future, so I changed to most nsaic version
+      theme: ThemeData.dark().copyWith(
+        appBarTheme: AppBarTheme(
+            color: Colors.white,
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+            )),
+      ),
       home: MyHomePage(title: 'Tourney'),
     );
   }
