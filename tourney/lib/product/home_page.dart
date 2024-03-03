@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourney/product/language/language_items.dart';
 
 class MyHomePage extends StatelessWidget {
-  String title = "Tourney";
+  String title = LanguageItems.homePageTitle;
 
   MyHomePage({@required title});
 
@@ -12,7 +13,7 @@ class MyHomePage extends StatelessWidget {
         //normally properties must takee from theme but we have not now
         title: Center(
             child: Text(
-          "Welcome To Tourney".toUpperCase(),
+          LanguageItems.welcomeTitleForAppBar.toUpperCase(),
         )),
       ),
       body: Container(
@@ -78,7 +79,7 @@ class TurnuvaBaslatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainersForOnPressedMethods(
-      myText: 'TURNUVA BAŞLAT',
+      myText: LanguageItems.homePageStartTournament.toUpperCase(),
       onPressed: () {},
     );
   }
@@ -90,7 +91,7 @@ class TurnuvayaDevamEtButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainersForOnPressedMethods(
-      myText: 'TURNUVAYA DEVAM ET',
+      myText: LanguageItems.homePageContinueTheTournament.toUpperCase(),
       onPressed: () {},
     );
   }
@@ -102,7 +103,7 @@ class GecmisTurnuvalarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainersForOnPressedMethods(
-      myText: 'GEÇMİŞ TURNUVALAR',
+      myText: LanguageItems.homePagePastTournaments.toUpperCase(),
       onPressed: () {},
     );
   }
@@ -114,7 +115,7 @@ class AyarlarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainersForOnPressedMethods(
-      myText: 'AYARLAR',
+      myText: LanguageItems.homePageSettings.toUpperCase(),
       onPressed: () {},
     );
   }
@@ -126,7 +127,7 @@ class HakkindaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainersForOnPressedMethods(
-      myText: 'HAKKINDA',
+      myText: LanguageItems.homePageAbout.toUpperCase(),
       onPressed: () {},
     );
   }
